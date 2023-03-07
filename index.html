@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            display: flex;
+            background-color: aqua;
+            width: fit-content;
+            margin: 10px auto;
+        }
+        li {
+            padding: 20px;
+            list-style: none;
+            border-right: 3px solid white;
+            cursor: pointer;
+        }
+        .active , li:hover {
+            background-color: tomato;
+        }
+        .content {
+            text-align: center;
+        }
+        .one, .two , .three {
+            display: none;
+        }
+        .elActive {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="active"  title=".one" name=".one">one</li>
+        <li title=".two">two</li>
+        <li title =".three">three</li>
+    </ul>
+    <div class="content">
+        <div class="one elActive"><h1>one</h1> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit, excepturi eveniet incidunt quasi distinctio, minus cumque voluptatem dolor eligendi, velit molestiae at ipsum pariatur consectetur tenetur. Quidem odit ullam asperiores.</div>
+    
+        <div class="two"><h1>two</h1> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit, excepturi eveniet incidunt quasi distinctio, minus cumque voluptatem dolor eligendi, velit molestiae at ipsum pariatur consectetur</div>
+    
+        <div class="three"><h1>three</h1> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit, excepturi eveniet incidunt quasi distinctio, minus cumque voluptatem </div>
+    </div>
+    <script>
+        let lis = document.querySelectorAll ('ul li')
+        lisArr = Array.from(lis)
+        child = document.querySelectorAll('.content div')
+        childArr = Array.from(child)
+        li = document.querySelector('.active')
+        lisArr.forEach(el => {
+            el.addEventListener('click',function(){
+                lisArr.forEach(el => {
+                    el.classList.remove('active')
+                    childArr.forEach(el =>{el.style.display = "none"})
+                } )
+                el.classList.add('active')
+                console.log(this.title)
+                document.querySelector(this.title).style.display = 'block'
+                
+            })
+        });
+        
+    </script>
+</body>
+</html>
